@@ -36,20 +36,20 @@ class LoginCtrl {
                 Utils::addErrorMessage('Nie podano hasła');
             }
         }
+        
+        $user = App::getDB()->get("users",[
+            "email","password","blocked","role"
+        ],[
+            "email" => $this->form->login
+        ]);
 
+        print_r($user);
         if (!App::getMessages()->isError()) {
-
-            if ($this->form->login == "admin" && $this->form->pass == "admin") {
-                $user = new User($this->form->login, 'admin');
-                $_SESSION['user'] = serialize($user);
-                RoleUtils::addRole($user->role);
-            } else if ($this->form->login == "user" && $this->form->pass == "user") {
-                $user = new User($this->form->login, 'user');
-                $_SESSION['user'] = serialize($user);
-                RoleUtils::addRole($user->role);
-            } else {
-                Utils::addErrorMessage('Niepoprawny login lub hasło');
-            }
+            
+            
+            if (isset($user["password"]) && $this->form->pass == $user["password"] && $user["blocked"] == 0) { 
+                RoleUtils::addRole($user["role"]);
+            } else { Utils::addErrorMessage('Niepoprawny login lub hasło'); }
         }
 
         return !App::getMessages()->isError();

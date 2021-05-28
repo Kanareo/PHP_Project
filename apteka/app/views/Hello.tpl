@@ -17,7 +17,8 @@
         {/foreach}
         </ul>
     {/if}
-
+    
+    <p><a href="{$conf->action_url}logout">Wyloguj</a></p>
 </body>
 
 </html>
