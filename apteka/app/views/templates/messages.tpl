@@ -1,7 +1,7 @@
-<h4>Messages</h4>
+<h4 style="color: white">Messages</h4>
 <ol>
     {foreach $msgs->getMessages() as $msg}
-        <div class="alert {if $msg->isInfo()}alert-success{/if}
+        <div style="color: white" class="alert {if $msg->isInfo()}alert-success{/if}
              {if $msg->isWarning()}alert-warning{/if}
              {if $msg->isError()}alert-danger{/if}" role="alert">
             {$msg->text}

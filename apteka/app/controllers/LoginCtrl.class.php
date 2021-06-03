@@ -8,6 +8,7 @@ use core\ParamUtils;
 use core\App;
 use core\Utils;
 use core\RoleUtils;
+use core\SessionUtils;
 
 class LoginCtrl {
 
@@ -70,8 +71,9 @@ class LoginCtrl {
         session_destroy();
 
         Utils::addInfoMessage('Poprawnie wylogowano z systemu');
+        SessionUtils::storeMessages();
 
-        $this->generateView();
+        App::getRouter()->redirectTo('mainView');
     }
 
     public function generateView() {
