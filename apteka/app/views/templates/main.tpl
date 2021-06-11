@@ -29,12 +29,15 @@
                             <nav id="nav">
                                 <ul>
                                     <li class="current_page_item"><a href="index.html">Strona główna</a></li>   
-                                    <li><a href="left-sidebar.html">Wyszukiwarka produktów</a></li>
-                                        {if \core\RoleUtils::inRole('admin') || \core\RoleUtils::inRole('user')}
+                                    <li><a href="{url action='browser'}">Wyszukiwarka produktów</a></li>
+                                    {if \core\RoleUtils::inRole('admin')}
+                                        <li><a href="{url action='adminPanel'}">Panel Administratora</a></li>
+                                    {/if}
+                                    {if \core\RoleUtils::inRole('admin') || \core\RoleUtils::inRole('user')}
                                         <li><a href="{url action='logout'}">Wyloguj się</a></li>
-                                        {else}
+                                    {else}
                                         <li><a href="{url action='login'}">Zaloguj się</a></li>
-                                        {/if}
+                                    {/if}
                                 </ul>
                             </nav>
 

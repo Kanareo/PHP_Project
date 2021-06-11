@@ -44,7 +44,7 @@ class LoginCtrl {
             "email" => $this->form->login
         ]);
 
-        print_r($user);
+        //print_r($user);
         if (!App::getMessages()->isError()) {
             
             
