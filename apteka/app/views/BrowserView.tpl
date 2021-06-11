@@ -4,7 +4,7 @@
     <h5><strong style="color: white">Wyszukaj lek</strong></h5>
     <form action="{$conf->action_url}browser" method="post">
         <p style="margin-bottom: 1%">
-            <input id="name" type="text" name="name" />
+            <input id="name" type="text" name="name" value="{$form->name}"/>
         </p>
         <select name="brand">
             <option value="" >Wszyscy producenci</option>
@@ -27,7 +27,30 @@
             {/foreach}
         </select>
         <p>
-            <input type="submit" value="Wyszukaj" style="margin-top: 5%"/>
+            <input type="submit" value="Wyszukaj" style="margin-top: 5%; margin-bottom: 5%"/>
         </p>
     </form>
+    {if count($products) > 0}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nazwa produktu</th>
+                    <th>Kategoria</th>
+                    <th>Producent</th>
+                    <th>Cena</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach $products as $p}
+                    <tr>
+                        <td>{$p['product_name']}</td>
+                        <td>{$p['category_name']}</td>
+                        <td>{$p['brand_name']}</td>
+                        <td>{$p['product_price']}</td>
+                        <td><a href="{url action='productView'}">INFO</a></td>
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    {/if}
 {/block}

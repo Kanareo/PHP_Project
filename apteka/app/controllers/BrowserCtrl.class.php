@@ -51,7 +51,7 @@ class BrowserCtrl{
         
         $search_params = [];
         if (isset($this->form->name) && !empty($this->form->name)) {
-            $search_params['name[~]'] = $this->form->name . '%';
+            $search_params['product_name[~]'] = $this->form->name . '%';
         }
         
         if (isset($this->form->brand) && !empty($this->form->brand)) {
@@ -80,6 +80,7 @@ class BrowserCtrl{
         }
         
         App::getSmarty()->assign('form', $this->form);
+        App::getSmarty()->assign('products', $this->records);
         $this->generateView();
     }
     
