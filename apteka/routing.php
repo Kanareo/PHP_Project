@@ -11,6 +11,7 @@ Utils::addRoute('browser', 'BrowserCtrl');
 Utils::addRoute('medInfo', 'MedInfoCtrl');
 Utils::addRoute('hello', 'HelloCtrl', ['user','admin']);
 Utils::addRoute('adminPanel', 'PanelCtrl', ['admin']);
+Utils::addRoute('userInfo', 'UserInfoCtrl', ['admin']);
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl', ['user','admin']);
 

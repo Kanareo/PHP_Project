@@ -24,9 +24,10 @@ class PanelCtrl{
         $this->form->blocked = ParamUtils::getFromRequest('blocked');
         $this->form->role = ParamUtils::getFromRequest('role');
         
+        
         try {
             $blocked = App::getDB()->select("users", [
-                "blocked"
+                "@blocked"
                     ]);
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -38,7 +39,7 @@ class PanelCtrl{
         
         try {
             $role = App::getDB()->select("users", [
-                "role"
+                "@role"
                     ]);
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -69,11 +70,11 @@ class PanelCtrl{
             $search_params['phone[~]'] = $this->form->phone . '%';
         }
         
-        if (isset($this->form->blocked) && !empty($this->form->blocked)) {
+        if (isset($this->form->blocked)) {
             $search_params['blocked'] = $this->form->blocked . '%';
         }
         if (isset($this->form->role) && !empty($this->form->role)) {
-            $search_params['role'] = $this->form->role . '%';
+            $search_params['role[~]'] = $this->form->role . '%';
         }
 
         $num_params = sizeof($search_params);
@@ -86,7 +87,7 @@ class PanelCtrl{
         $where ["ORDER"] = "id_user";
         try {
             $this->records = App::getDB()->select("users",'*', $where);
-            //print_r(App::getDB()->debug()->select("users",'*', $where));
+            print_r(App::getDB()->debug()->select("users",'*', $where));
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
             if (App::getConf()->debug)

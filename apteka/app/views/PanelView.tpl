@@ -19,7 +19,7 @@
         <p style="margin-bottom: 1%">
             <input id="phone" type="text" name="phone" value=""/>
         </p>
-        <select name="brand">
+        <select name="blocked">
             <option value="" >-----</option>
             {foreach $blocked as $b}
                 {strip}
@@ -29,7 +29,7 @@
                 {/strip}
             {/foreach}
         </select>
-        <select name="category">
+        <select name="role">
             <option value="">Wszystkie role</option>
             {foreach $role as $r}
                 {strip}
@@ -64,9 +64,9 @@
                         <td>{$u['second_name']}</td>
                         <td>{$u['email']}</td>
                         <td>{$u['phone']}</td>
-                        <td>{$u['blocked']}</td>
+                        <td>{if $u['blocked'] == 1}Tak{else}Nie{/if}</td>
                         <td>{$u['role']}</td>
-                        <td><a href="{url action='userView'}">INFO</a></td>
+                        <td><a href="{url action='userInfo' user=$u['id_user']}">INFO</a></td>
                     </tr>
                 {/foreach}
             </tbody>
