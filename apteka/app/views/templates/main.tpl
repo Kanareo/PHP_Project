@@ -28,7 +28,7 @@
                             <!-- Nav -->
                             <nav id="nav">
                                 <ul>
-                                    <li class="current_page_item"><a href="index.html">Strona główna</a></li>   
+                                    <li class="current_page_item"><a href="{url action='mainView'}">Strona główna</a></li>   
                                     <li><a href="{url action='browser'}">Wyszukiwarka produktów</a></li>
                                     {if \core\RoleUtils::inRole('admin')}
                                         <li><a href="{url action='adminPanel'}">Panel Administratora</a></li>
@@ -45,7 +45,7 @@
                     </header>
 
                     <!-- Banner -->
-                    <div id="banner" style="min-height: 32.3em">
+                    <div id="banner" style="min-height: 39em">
                         {block name=content}{/block}
                     </div>
                     <div>
