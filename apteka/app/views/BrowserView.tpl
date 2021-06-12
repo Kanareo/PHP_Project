@@ -47,7 +47,7 @@
                         <td>{$p['category_name']}</td>
                         <td>{$p['brand_name']}</td>
                         <td>{$p['product_price']}</td>
-                        <td><a href="{url action='productView'}">INFO</a></td>
+                        <td><a href="{url action='medInfo'}">INFO</a></td>
                     </tr>
                 {/foreach}
             </tbody>
