@@ -9,7 +9,7 @@
                     <th>Kategoria</th>
                     <th>Producent</th>
                     <th>Cena</th>
-                    {if \core\RoleUtils::inRole('admin')}<td>Ilość</td>{/if}
+                    <td>Ilość</td>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +18,8 @@
                         <td>{$products['category_name']}</td>
                         <td>{$products['brand_name']}</td>
                         <td>{$products['product_price']}</td>
-                        {if \core\RoleUtils::inRole('admin')}<td>{$products['quantity']}</td>{/if}
+                        <td>{$products['quantity']}</td>
+                        {if \core\RoleUtils::inRole('admin')}<td><a href="{url action='medUpdate' product=$products['id_product']}">Aktualizuj</a></td>{/if}
                     </tr>
             </tbody>
         </table>

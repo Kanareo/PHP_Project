@@ -24,7 +24,7 @@
             {foreach $blocked as $b}
                 {strip}
                     <option value="{$b['blocked']}">
-                        {$b['blocked']}
+                        {if $b['blocked'] == 0}Nie{else}Tak{/if}
                     </option>
                 {/strip}
             {/foreach}

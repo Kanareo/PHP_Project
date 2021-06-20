@@ -21,9 +21,21 @@
                 <td>{$users['second_name']}</td>
                 <td>{$users['email']}</td>
                 <td>{$users['phone']}</td>
-                <td>{if $users['blocked'] == 1}Tak{else}Nie{/if}</td>
+                <form action="{$conf->action_url}userUpdateSave/{$users['id_user']}" method="post">
+                <td>
+                <select name="blocked">
+                        {foreach $blocked as $b}
+                            {strip}
+                                <option value="{$b['blocked']}">
+                                {if $b['blocked'] == 0}Nie{else}Tak{/if}
+                                </option>
+                            {/strip}
+                        {/foreach}
+                </select>       
+                </td>
                 <td>{$users['role']}</td>
-                {if \core\RoleUtils::inRole('admin')}<td><a href="{url action='userUpdate' product=$users['id_user']}">Aktualizuj</a></td>{/if}
+                <td><input type="submit" value="Aktualizuj" style="margin-top: 5%; margin-bottom: 5%"/></td>
+                </form>
             </tr>
         </tbody>
     </table>
