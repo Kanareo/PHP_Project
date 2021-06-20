@@ -17,6 +17,7 @@ Utils::addRoute('userInfo', 'UserInfoCtrl', ['admin']);
 Utils::addRoute('userUpdate', 'UserUpdateCtrl', ['admin']);
 Utils::addRoute('userUpdateSave', 'UserUpdateCtrl', ['admin']);
 Utils::addRoute('userAdd', 'UserAddCtrl', ['admin']);
+Utils::addRoute('userAddSave', 'UserAddCtrl', ['admin']);
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl', ['user','admin']);
 

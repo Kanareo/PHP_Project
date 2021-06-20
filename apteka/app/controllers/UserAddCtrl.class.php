@@ -15,14 +15,6 @@ class UserAddCtrl{
     }
     
     public function action_userAdd() {    
-        $this->form->first_name = ParamUtils::getFromRequest('first_name');
-        $this->form->second_name = ParamUtils::getFromRequest('second_name');
-        $this->form->email = ParamUtils::getFromRequest('email');
-        $this->form->phone = ParamUtils::getFromRequest('phone');
-        $this->form->blocked = ParamUtils::getFromRequest('blocked');
-        $this->form->role = ParamUtils::getFromRequest('role');
-        $this->form->password = ParamUtils::getFromRequest('password');
-        
         
         try {
             $blocked = App::getDB()->select("users", [
@@ -48,6 +40,18 @@ class UserAddCtrl{
         
         App::getSmarty()->assign('role', $role);
         
+        $this->generateView();
+    }
+    
+    public function action_userAddSave(){
+        
+        $this->form->first_name = ParamUtils::getFromRequest('first_name');
+        $this->form->second_name = ParamUtils::getFromRequest('second_name');
+        $this->form->email = ParamUtils::getFromRequest('email');
+        $this->form->phone = ParamUtils::getFromRequest('phone');
+        $this->form->blocked = ParamUtils::getFromRequest('blocked');
+        $this->form->role = ParamUtils::getFromRequest('role');
+        $this->form->password = ParamUtils::getFromRequest('password');
         
         if(
             (isset($this->form->first_name) && !empty($this->form->first_name) &&
@@ -89,6 +93,7 @@ class UserAddCtrl{
             Utils::addErrorMessage('Nie podano jednego z parametrow, do wprawodzenia użytkownika wymagane są wszystkie');
         }
         $this->generateView();
+        
     }
     
     public function generateView() {

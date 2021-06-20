@@ -3,7 +3,7 @@
 {block name=content}
     <h2><strong>Lista użytkowników</strong></h2>
     <h5><strong style="color: white">Wyszukaj użytkownika</strong></h5>
-    <form action="{$conf->action_url}userAdd" method="post">
+    <form action="{$conf->action_url}userAddSave" method="post">
         <p style="margin-bottom: 1%">
             <input id="first_name" type="text" name="first_name" value=""/>
         </p>
