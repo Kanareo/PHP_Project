@@ -31,7 +31,13 @@
                                     <li class="current_page_item"><a href="{url action='mainView'}">Strona główna</a></li>   
                                     <li><a href="{url action='browser'}">Wyszukiwarka produktów</a></li>
                                     {if \core\RoleUtils::inRole('admin')}
-                                        <li><a href="{url action='adminPanel'}">Panel Administratora</a></li>
+                                        <li>
+                                            <a>Panel Administratora</a>
+                                            <ul>
+                                                <li><a href="{url action='adminPanel'}">Wyszukaj użytkownika</a></li>
+                                                <li><a href="{url action='userAdd'}">Dodaj użytkownika</a></li>
+                                            </ul>
+                                        </li>
                                     {/if}
                                     {if \core\RoleUtils::inRole('admin') || \core\RoleUtils::inRole('user')}
                                         <li><a href="{url action='logout'}">Wyloguj się</a></li>
@@ -46,14 +52,14 @@
 
                     <!-- Banner -->
                     <div id="banner" style="min-height: 31.5em">
-                        {block name=content}{/block}
-                    </div>
-                    <div>
-                        {block name=messages}{/block}
-                    </div>
+                    {block name=content}{/block}
                 </div>
+                <div>
+                {block name=messages}{/block}
             </div>
         </div>
+    </div>
+</div>
 
 <!-- Footer Wrapper -->
 <div id="footer-wrapper" style="padding: 1em 0 0 0">

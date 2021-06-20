@@ -20,7 +20,7 @@
             <input id="phone" type="text" name="phone" value=""/>
         </p>
         <select name="blocked">
-            <option value="" >-----</option>
+            <option value="" selected disabled>-----</option>
             {foreach $blocked as $b}
                 {strip}
                     <option value="{$b['blocked']}">

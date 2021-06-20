@@ -70,7 +70,7 @@ class PanelCtrl{
             $search_params['phone[~]'] = $this->form->phone;
         }
      
-        if (isset($this->form->blocked) && ($this->form->blocked == 0 || $this->form->blocked == 1)) {
+        if (isset($this->form->blocked)) {
             $search_params['blocked'] = $this->form->blocked;
         }
         
