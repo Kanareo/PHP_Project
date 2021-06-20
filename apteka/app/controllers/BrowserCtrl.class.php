@@ -51,15 +51,15 @@ class BrowserCtrl{
         
         $search_params = [];
         if (isset($this->form->name) && !empty($this->form->name)) {
-            $search_params['product_name[~]'] = $this->form->name . '%';
+            $search_params['product_name[~]'] = $this->form->name;
         }
         
         if (isset($this->form->brand) && !empty($this->form->brand)) {
-            $search_params['brand_name'] = $this->form->brand . '%';
+            $search_params['brand_name'] = $this->form->brand;
         }
         
         if (isset($this->form->category) && !empty($this->form->category)) {
-            $search_params['category_name'] = $this->form->category . '%';
+            $search_params['category_name'] = $this->form->category;
         }
 
         $num_params = sizeof($search_params);

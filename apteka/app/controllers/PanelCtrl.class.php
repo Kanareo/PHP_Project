@@ -52,29 +52,30 @@ class PanelCtrl{
         
         $search_params = [];
         if (isset($this->form->id) && !empty($this->form->id)) {
-            $search_params['id_user[~]'] = $this->form->id . '%';
+            $search_params['id_user[~]'] = $this->form->id;
         }
         
         if (isset($this->form->first_name) && !empty($this->form->first_name)) {
-            $search_params['first_name[~]'] = $this->form->first_name . '%';
+            $search_params['first_name[~]'] = $this->form->first_name;
         }
         
         if (isset($this->form->second_name) && !empty($this->form->second_name)) {
-            $search_params['second_name[~]'] = $this->form->second_name . '%';
+            $search_params['second_name[~]'] = $this->form->second_name;
         }
         if (isset($this->form->email) && !empty($this->form->email)) {
-            $search_params['email[~]'] = $this->form->email . '%';
+            $search_params['email[~]'] = $this->form->email;
         }
         
         if (isset($this->form->phone) && !empty($this->form->phone)) {
-            $search_params['phone[~]'] = $this->form->phone . '%';
+            $search_params['phone[~]'] = $this->form->phone;
+        }
+     
+        if (isset($this->form->blocked) && ($this->form->blocked == 0 || $this->form->blocked == 1)) {
+            $search_params['blocked'] = $this->form->blocked;
         }
         
-        if (isset($this->form->blocked)) {
-            $search_params['blocked'] = $this->form->blocked . '%';
-        }
         if (isset($this->form->role) && !empty($this->form->role)) {
-            $search_params['role[~]'] = $this->form->role . '%';
+            $search_params['role[~]'] = $this->form->role;
         }
 
         $num_params = sizeof($search_params);
