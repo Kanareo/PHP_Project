@@ -45,7 +45,7 @@
                     </header>
 
                     <!-- Banner -->
-                    <div id="banner" style="min-height: 39em">
+                    <div id="banner" style="min-height: 31.5em">
                         {block name=content}{/block}
                     </div>
                     <div>
