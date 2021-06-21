@@ -50,6 +50,8 @@ class LoginCtrl {
             if($user["blocked"] == 1) { Utils::addErrorMessage('Twoje konto jest zablokowane, skontaktuje się z administratorem'); }
             else if (isset($user["password"]) && $this->form->pass == $user["password"]) { 
                 RoleUtils::addRole($user["role"]);
+                SessionUtils::storeObject("user", new User($this->form->login,$user["role"]));
+                //SessionUtils::store("email",$user["email"]);
             } else { Utils::addErrorMessage('Niepoprawny login lub hasło'); }
         }
 

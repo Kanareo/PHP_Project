@@ -20,6 +20,7 @@
                         <td>{$products['product_price']}</td>
                         <td>{$products['quantity']}</td>
                         {if \core\RoleUtils::inRole('admin')}<td><a href="{url action='medUpdate' product=$products['id_product']}">Aktualizuj</a></td>{/if}
+                        {if \core\RoleUtils::inRole('user')}<td><a href="{url action='cartAdd' product=$products['id_product']}">Dodaj do koszyka</a></td>{/if}
                     </tr>
             </tbody>
         </table>

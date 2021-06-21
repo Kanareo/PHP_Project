@@ -11,6 +11,8 @@ Utils::addRoute('browser', 'BrowserCtrl');
 Utils::addRoute('medInfo', 'MedInfoCtrl');
 Utils::addRoute('medUpdate', 'MedUpdateCtrl', ['employee','admin']);
 Utils::addRoute('medUpdateSave', 'MedUpdateCtrl', ['employee','admin']);
+Utils::addRoute('cartAdd', 'CartCtrl', ['user']);
+Utils::addRoute('cartSave', 'CartCtrl', ['user']);
 Utils::addRoute('hello', 'HelloCtrl', ['user','admin']);
 Utils::addRoute('adminPanel', 'PanelCtrl', ['admin']);
 Utils::addRoute('userInfo', 'UserInfoCtrl', ['admin']);
