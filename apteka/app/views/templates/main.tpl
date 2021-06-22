@@ -39,6 +39,15 @@
                                             </ul>
                                         </li>
                                     {/if}
+                                    {if \core\RoleUtils::inRole('user')}
+                                        <li>
+                                            <a>Panel Pracownika</a>
+                                            <ul>
+                                                <li><a href="{url action='order'}">Wprowadź zamówienie</a></li>
+                                                <li><a href="{url action='orderEdit'}">Edytuj zamówienie</a></li>
+                                            </ul>
+                                        </li>
+                                    {/if}
                                     {if \core\RoleUtils::inRole('admin') || \core\RoleUtils::inRole('user')}
                                         <li><a href="{url action='logout'}">Wyloguj się</a></li>
                                     {else}

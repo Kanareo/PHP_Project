@@ -63,7 +63,7 @@ class LoginCtrl {
         $this->getParams();
 
         if ($this->validate()) {
-            App::getRouter()->redirectTo("hello");
+            App::getRouter()->redirectTo("mainView");
         } else {
             $this->generateView();
         }
