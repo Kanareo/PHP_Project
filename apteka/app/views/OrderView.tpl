@@ -20,7 +20,7 @@
         </p>
     </form>
     <form action="{$conf->action_url}orderClear" method="post">
-            <input type="submit" value="Nowe zamówienie" style="margin-top: 5%; margin-bottom: 5%"/>
+            <input type="submit" value="Zamknij zamówienie" style="margin-top: 5%; margin-bottom: 5%"/>
     </form>    
     {include file='messages.tpl'}
 {/block}

@@ -140,8 +140,22 @@ class OrderCtrl {
     }
 
     public function action_orderClear() {
+        
+        $id_order = SessionUtils::load("id_order");
+        
+        try {
+            App::getDB()->update("orders",[
+                "order_status" => "Oczekuje na dostawe"
+            ],[
+                "id_order[=]" => $id_order
+            ]);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        
         SessionUtils::remove("check");
-        SessionUtils::remove("id_order");
         App::getRouter()->redirectTo("order");
     }
 

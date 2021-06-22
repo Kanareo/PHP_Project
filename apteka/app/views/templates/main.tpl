@@ -44,7 +44,7 @@
                                             <a>Panel Pracownika</a>
                                             <ul>
                                                 <li><a href="{url action='order'}">Wprowadź zamówienie</a></li>
-                                                <li><a href="{url action='orderEdit'}">Edytuj zamówienie</a></li>
+                                                <li><a href="{url action='orderEdit'}">Panel zarządzania zamówieniami</a></li>
                                             </ul>
                                         </li>
                                     {/if}
