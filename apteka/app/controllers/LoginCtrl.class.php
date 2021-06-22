@@ -38,12 +38,23 @@ class LoginCtrl {
             }
         }
         
-        $user = App::getDB()->get("users",[
-            "email","password","blocked","role"
-        ],[
-            "email" => $this->form->login
-        ]);
-
+        try {
+                $user = App::getDB()->get("users",[
+                    "email","password","blocked","role"
+                ],[
+                    "email" => $this->form->login
+                ]);
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
+        
+        if(is_null($user)){
+            Utils::addErrorMessage('Niepoprawny login lub hasło');
+            return false;
+        }
+             
         //print_r($user);
         if (!App::getMessages()->isError()) {
             

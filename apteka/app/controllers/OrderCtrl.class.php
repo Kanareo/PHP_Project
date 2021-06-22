@@ -19,8 +19,9 @@ class OrderCtrl {
     public function action_order() {
         
         try {
-            $id_product = App::getDB()->select("products", [
-                "id_product"
+            $product = App::getDB()->select("products", [
+                "id_product",
+                "product_name"
                     ]);
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -28,17 +29,15 @@ class OrderCtrl {
                 Utils::addErrorMessage($e->getMessage());
         }
         
-        App::getSmarty()->assign('id_product', $id_product);
-        
-        
+        App::getSmarty()->assign('product', $product);         
         App::getSmarty()->display('OrderView.tpl');
     }
 
     public function action_orderAdd() {
-        
         try {
-            $id_product = App::getDB()->select("products", [
-                "id_product"
+            $product = App::getDB()->select("products", [
+                "id_product",
+                "product_name"
                     ]);
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -46,7 +45,7 @@ class OrderCtrl {
                 Utils::addErrorMessage($e->getMessage());
         }
         
-        App::getSmarty()->assign('id_product', $id_product);
+        App::getSmarty()->assign('product', $product);
 
         if (null == SessionUtils::load("check", true)) {
 
@@ -78,7 +77,7 @@ class OrderCtrl {
                     Utils::addErrorMessage($e->getMessage());
             }
 
-            //print($order->id_user);
+            //print($order->id_user);    
 
             try {
                 App::getDB()->insert("orders",[
@@ -103,11 +102,8 @@ class OrderCtrl {
 
             SessionUtils::store("id_order", $id_order);
 
-            //print_r($order);
             SessionUtils::store("check", true);
-        } //else print("Order juz jest");
-
-        //print($this->transfer->id_user);
+        }
 
         $this->form->id_order = SessionUtils::load("id_order", true);
         $this->form->id_product = ParamUtils::getFromRequest("id_product");
@@ -125,17 +121,14 @@ class OrderCtrl {
                             "id_product" => $this->form->id_product,
                             "quantity" => $this->form->quantity
                 ]));*/
+                Utils::addInfoMessage('Pomyślnie dodano produkt do listy');
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas wprowadzania rekordów');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
         }else Utils::addErrorMessage('Nie można wprowadzić pustych wartości');
-
-        //print_r($this->form);
-
-
-
+        
         $this->generateView();
     }
 

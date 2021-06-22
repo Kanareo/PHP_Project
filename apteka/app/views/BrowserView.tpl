@@ -4,9 +4,9 @@
     <h5><strong style="color: white">Wyszukaj lek</strong></h5>
     <form action="{$conf->action_url}browser" method="post">
         <p style="margin-bottom: 1%">
-            <input id="name" type="text" name="name" value="{$form->name}"/>
+            <input id="name" type="text" name="name" value="{$form->name}" placeholder="Nazwa leku" style="width: 166.4%"/>
         </p>
-        <select name="brand">
+        <select name="brand" style="margin-bottom: 1%">
             <option value="" >Wszyscy producenci</option>
             {foreach $brands as $b}
                 {strip}
@@ -32,7 +32,7 @@
     </form>
     {if count($products) > 0}
         <table>
-            <thead>
+            <thead style="color: white; font-weight: bold">
                 <tr>
                     <th>Nazwa produktu</th>
                     <th>Kategoria</th>
@@ -40,7 +40,7 @@
                     <th>Cena</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: lightgray">
                 {foreach $products as $p}
                     <tr>
                         <td>{$p['product_name']}</td>

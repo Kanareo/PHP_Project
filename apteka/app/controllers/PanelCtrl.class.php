@@ -88,7 +88,7 @@ class PanelCtrl{
         $where ["ORDER"] = "id_user";
         try {
             $this->records = App::getDB()->select("users",'*', $where);
-            print_r(App::getDB()->debug()->select("users",'*', $where));
+            //print_r(App::getDB()->debug()->select("users",'*', $where));
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
             if (App::getConf()->debug)

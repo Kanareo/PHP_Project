@@ -3,7 +3,7 @@
 {block name=content}
     <h2><strong>Informacja o użytkowniku</strong></h2>
     <table>
-        <thead>
+        <thead style="color: white; font-weight: bold">
             <tr>
                 <th>ID</th>
                 <th>Imię</th>
@@ -14,7 +14,7 @@
                 <th>Rola</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="color: lightgray">
             <tr>
                 <td>{$users['id_user']}</td>
                 <td>{$users['first_name']}</td>

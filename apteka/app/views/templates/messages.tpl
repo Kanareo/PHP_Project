@@ -1,4 +1,4 @@
-<h4 style="color: white">Messages</h4>
+<h4 style="color: white">Komunikaty</h4>
 <ol>
     {foreach $msgs->getMessages() as $msg}
         <div style="color: white" class="alert {if $msg->isInfo()}alert-success{/if}

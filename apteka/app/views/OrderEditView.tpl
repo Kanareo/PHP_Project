@@ -4,7 +4,7 @@
     <h2><strong>Aktualne zamówienia</strong></h2>
     {if count($orders) > 0}
         <table>
-            <thead>
+            <thead style="color: white; font-weight: bold">
                 <tr>
                     <th>ID Zamówienia</th>
                     <th>ID Użytkownika</th>
@@ -12,7 +12,7 @@
                     <th>Data złożenia zamówienia</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: lightgray">
                 {foreach $orders as $o}
                     <tr>
                         <td>{$o['id_order']}</td>

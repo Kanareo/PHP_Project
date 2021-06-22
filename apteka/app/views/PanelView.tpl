@@ -2,25 +2,24 @@
 
 {block name=content}
     <h2><strong>Lista użytkowników</strong></h2>
-    <h5><strong style="color: white">Wyszukaj użytkownika</strong></h5>
     <form action="{$conf->action_url}adminPanel" method="post">
         <p style="margin-bottom: 1%">
-            <input id="id" type="text" name="id" value=""/>
+            <input id="id" type="text" name="id" value="" placeholder="ID użytkownika" style="width: 166.9%"/>
         </p>
         <p style="margin-bottom: 1%">
-            <input id="first_name" type="text" name="first_name" value=""/>
+            <input id="first_name" type="text" name="first_name" value="" placeholder="Imie użytkownika" style="width: 166.9%"/>
         </p>
         <p style="margin-bottom: 1%">
-            <input id="second_name" type="text" name="second_name" value=""/>
+            <input id="second_name" type="text" name="second_name" value="" placeholder="Nazwisko użytkownika" style="width: 166.9%"/>
         </p>
         <p style="margin-bottom: 1%">
-            <input id="email" type="text" name="email" value=""/>
+            <input id="email" type="text" name="email" value="" placeholder="Email użytkownika" style="width: 166.9%"/>
         </p>
         <p style="margin-bottom: 1%">
-            <input id="phone" type="text" name="phone" value=""/>
+            <input id="phone" type="text" name="phone" value="" placeholder="Nr telefonu użytkownika" style="width: 166.9%"/>
         </p>
-        <select name="blocked">
-            <option value="" selected disabled>-----</option>
+        <select name="blocked" style="margin-bottom: 1%">
+            <option value="" selected>-----</option>
             {foreach $blocked as $b}
                 {strip}
                     <option value="{$b['blocked']}">
@@ -45,7 +44,7 @@
     </form>
     {if count($users) > 0}
         <table>
-            <thead>
+            <thead style="color: white; font-weight: bold">
                 <tr>
                     <th>ID</th>
                     <th>Imię</th>
@@ -56,7 +55,7 @@
                     <th>Rola</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: lightgray">
                 {foreach $users as $u}
                     <tr>
                         <td>{$u['id_user']}</td>

@@ -2,25 +2,24 @@
 
 {block name=content}
     <h2><strong>Wprowadź zamówienie</strong></h2>
-    <form action="{$conf->action_url}orderAdd" method="post">
-        <select name="id_product">
-            {foreach $id_product as $id}
+    <form method="post">
+        <label style="color: white; font-size: 150%">Nazwa produktu: </label>
+        <select name="id_product" style="width: 100%">
+            {foreach $product as $p}
                 {strip}
-                    <option value="{$id['id_product']}">
-                        {$id['id_product']}
+                    <option value="{$p['id_product']}">
+                        {$p['product_name']}
                     </option>
                 {/strip}
             {/foreach}
         </select>
-        <p style="margin-bottom: 1%">
-            <input id="quantity" type="text" name="quantity" value=""/>
-        </p>
+        <br>
+        <label style="color: white; font-size: 150%">Ilość produktu: </label>
+        <input id="quantity" type="text" name="quantity" value="" style="width: 100%"/>
         <p>
-            <input type="submit" value="Wprowadź zamówienie" style="margin-top: 5%; margin-bottom: 5%"/>
+            <input type="submit" value="Wprowadź zamówienie" style="margin-top: 5%; margin-bottom: 5%; font-size:70%"  formaction="{$conf->action_url}orderAdd"/>
+            <input type="submit" value="Zamknij zamówienie" style="margin-top: 5%; margin-bottom: 5%; font-size:70%" formaction="{$conf->action_url}orderClear"/>
         </p>
-    </form>
-    <form action="{$conf->action_url}orderClear" method="post">
-            <input type="submit" value="Zamknij zamówienie" style="margin-top: 5%; margin-bottom: 5%"/>
-    </form>    
+    </form>   
     {include file='messages.tpl'}
 {/block}

@@ -3,7 +3,7 @@
 {block name=content}
     <h2><strong>Informacja o leku</strong></h2>
         <table>
-            <thead>
+            <thead style="color: white; font-weight: bold">
                 <tr>
                     <th>Nazwa produktu</th>
                     <th>Kategoria</th>
@@ -12,7 +12,7 @@
                     <td>Ilość</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: lightgray">
                     <tr>
                         <td>{$products['product_name']}</td>
                         <td>{$products['category_name']}</td>

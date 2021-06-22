@@ -9,7 +9,9 @@
         <input id="id_pass" type="password" name="pass" /></p>
         <p><input type="submit" value="Zaloguj" style="margin-top: 5%"/></p>
     </form>
-    {include file='messages.tpl'}
+    <div style="font-weight: bold">
+        {include file='messages.tpl'}
+    </div>
 </div>
     
 {/block}
