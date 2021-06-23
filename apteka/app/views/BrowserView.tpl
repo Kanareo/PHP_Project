@@ -3,9 +3,7 @@
 {block name=content}
     <h5><strong style="color: white">Wyszukaj lek</strong></h5>
     <form action="{$conf->action_url}browser" method="post">
-        <p style="margin-bottom: 1%">
-            <input id="name" type="text" name="name" value="{$form->name}" placeholder="Nazwa leku" style="width: 166.4%"/>
-        </p>
+            <input id="name" type="text" name="name" value="{$form->name}" placeholder="Nazwa leku" style="margin-bottom: 1%"/>
         <select name="brand" style="margin-bottom: 1%">
             <option value="" >Wszyscy producenci</option>
             {foreach $brands as $b}

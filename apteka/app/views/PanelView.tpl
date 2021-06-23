@@ -3,21 +3,11 @@
 {block name=content}
     <h2><strong>Lista użytkowników</strong></h2>
     <form action="{$conf->action_url}adminPanel" method="post">
-        <p style="margin-bottom: 1%">
-            <input id="id" type="text" name="id" value="" placeholder="ID użytkownika" style="width: 166.9%"/>
-        </p>
-        <p style="margin-bottom: 1%">
-            <input id="first_name" type="text" name="first_name" value="" placeholder="Imie użytkownika" style="width: 166.9%"/>
-        </p>
-        <p style="margin-bottom: 1%">
-            <input id="second_name" type="text" name="second_name" value="" placeholder="Nazwisko użytkownika" style="width: 166.9%"/>
-        </p>
-        <p style="margin-bottom: 1%">
-            <input id="email" type="text" name="email" value="" placeholder="Email użytkownika" style="width: 166.9%"/>
-        </p>
-        <p style="margin-bottom: 1%">
-            <input id="phone" type="text" name="phone" value="" placeholder="Nr telefonu użytkownika" style="width: 166.9%"/>
-        </p>
+            <input id="id" type="text" name="id" value="" placeholder="ID użytkownika" style="margin-bottom: 1%"/>
+            <input id="first_name" type="text" name="first_name" value="" placeholder="Imie użytkownika" style="margin-bottom: 1%"/>
+            <input id="second_name" type="text" name="second_name" value="" placeholder="Nazwisko użytkownika" style="margin-bottom: 1%"/>
+            <input id="email" type="text" name="email" value="" placeholder="Email użytkownika" style="margin-bottom: 1%"/>
+            <input id="phone" type="text" name="phone" value="" placeholder="Nr telefonu użytkownika" style="margin-bottom: 1%"/>
         <select name="blocked" style="margin-bottom: 1%">
             <option value="" selected>-----</option>
             {foreach $blocked as $b}
