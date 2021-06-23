@@ -85,7 +85,7 @@ class UserAddCtrl{
        
         if($this->validate()){
             try {
-                $this->records = App::getDB()->insert("users",
+                App::getDB()->insert("users",
                         [
                             "first_name" => $this->form->first_name,
                             "second_name" => $this->form->second_name,

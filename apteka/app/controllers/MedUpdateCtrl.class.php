@@ -42,7 +42,7 @@ class MedUpdateCtrl {
         if (is_numeric($this->form->quantity) && $this->form->quantity > 0) {
 
             try {
-                $this->records = App::getDB()->update("products",
+                App::getDB()->update("products",
                         [
                             'quantity' => $this->form->quantity
                         ],

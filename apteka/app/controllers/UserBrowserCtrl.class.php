@@ -10,7 +10,7 @@ use core\ParamUtils;
 
 class UserBrowserCtrl{
     
-    public $recordsPerPage = 2;
+    public $recordsPerPage = 5;
     
     public function __construct() {
         $this->form = new UsersForm();
@@ -104,17 +104,23 @@ class UserBrowserCtrl{
         $offset = $this->recordsPerPage * ($page - 1);
         $where ["LIMIT"] = [$offset,$this->recordsPerPage];
         
-        try {
-            $this->records = App::getDB()->select("users",'*', $where);
-            //print_r(App::getDB()->debug()->select("users",'*', $where));
-        } catch (\PDOException $e) {
-            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
-            if (App::getConf()->debug)
-                echo($e);
-                //Utils::addErrorMessage($e->getMessage());
+        if($numRecords > 0){
+        
+            try {
+                $this->records = App::getDB()->select("users",'*', $where);
+                //print_r(App::getDB()->debug()->select("users",'*', $where));
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+                if (App::getConf()->debug)
+                    echo($e);
+                    //Utils::addErrorMessage($e->getMessage());
+            }
+            
+            App::getSmarty()->assign('users', $this->records);
+            
         }
         
-        App::getSmarty()->assign('users', $this->records);
+        App::getSmarty()->assign('numRecords', $numRecords);
         
     }
     

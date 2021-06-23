@@ -53,7 +53,7 @@ class UserUpdateCtrl {
         $this->form->blocked = ParamUtils::getFromRequest("blocked");
 
         try {
-            $this->records = App::getDB()->update("users",
+            App::getDB()->update("users",
                     [
                         'blocked' => $this->form->blocked
                     ],

@@ -3,7 +3,7 @@
 {block name=content}
     <h2><strong>Aktualizacja produktu</strong></h2>
     <table>
-        <thead>
+        <thead style="color: white; font-weight: bold">
             <tr>
                 <th>Nazwa produktu</th>
                 <th>Kategoria</th>
@@ -12,7 +12,7 @@
                 <td>Ilość</td>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="color: lightgray">
             <tr>
                 <td>{$products['product_name']}</td>
                 <td>{$products['category_name']}</td>
@@ -20,9 +20,7 @@
                 <td>{$products['product_price']}</td>
                 <form action="{$conf->action_url}medUpdateSave/{$products['id_product']}" method="post">
                 <td>
-                <p style="margin-bottom: 1%">
-                    <input id="quantity" type="text" name="quantity" value="{$products['quantity']}"/>
-                </p>        
+                    <input style="width: 30%; border-radius: 35%; text-align: center; border-style:solid" id="quantity" type="text" name="quantity" value="{$products['quantity']}"/>      
                 </td>
                 <td><input type="submit" value="Aktualizuj" style="margin-top: 5%; margin-bottom: 5%"/></td>
                 </form>

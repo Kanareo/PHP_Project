@@ -43,6 +43,48 @@ class OrderEditCtrl {
             if (App::getConf()->debug)
                 Utils::addErrorMessage($e->getMessage());
         }
+        
+        try {
+            $id_product = App::getDB()->select("order_items","id_product",[
+                "id_order[=]" => $id_order
+            ]);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        
+        try {
+            $quantity = App::getDB()->select("order_items","quantity",[
+                "id_order[=]" => $id_order
+            ]);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        
+        print_r($id_product);
+        print("\n");
+        print_r($quantity);
+        
+        $numRecords = count($id_product);
+        
+        try {
+            for($i = 0; $i < $numRecords; $i++){
+                App::getDB()->update("products",[
+                    "quantity[+]" => $quantity[$i]
+                ],[
+                    "id_product[=]" => $id_product[$i]
+                ]);
+            } 
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+        
+        
         App::getRouter()->redirectTo("orderEdit");
 
     }
