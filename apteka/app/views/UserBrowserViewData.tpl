@@ -26,6 +26,13 @@
             {/foreach}
         </tbody>
     </table>
+    <center>          
+        <button onclick="ajaxPostForm('form', '{url action="userBrowserData" p = {$page-1}}', 'data'); return false;" {if {$page-1}==0}class="alt" disabled{/if}> &lt; </button>
+        <button onclick="ajaxPostForm('form', '{url action="userBrowserData" p = 1}', 'data'); return false;" {if {$page}==1}class="alt" disabled{/if}>1</button>
+        <span style="margin:5%">Strona {$page} z {$lastPage-1}</span>
+        <button onclick="ajaxPostForm('form', '{url action="userBrowserData" p = {$lastPage-1}}', 'data'); return false;" {if {$page}=={$lastPage-1}}class="alt" disabled{/if}>{$lastPage-1}</button>
+        <button onclick="ajaxPostForm('form', '{url action="userBrowserData" p = {$page+1}}', 'data'); return false;" {if {$page+1}=={$lastPage}}class="alt" disabled{/if}> &gt; </button>
+    </center>
 {else}
     <h3 style="color: white; font-weight: bold">Nie znaleziono użytkowników</h3>
 {/if}

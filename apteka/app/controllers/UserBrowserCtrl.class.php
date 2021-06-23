@@ -10,7 +10,7 @@ use core\ParamUtils;
 
 class UserBrowserCtrl{
     
-    public $recordsPerPage = 5;
+    public $recordsPerPage = 2;
     
     public function __construct() {
         $this->form = new UsersForm();
@@ -88,6 +88,22 @@ class UserBrowserCtrl{
         }
         
         $where ["ORDER"] = "id_user";
+        
+        $numRecords = 0;
+        
+        try {
+            $numRecords = App::getDB()->count("users", $where);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                echo($e);
+                //Utils::addErrorMessage($e->getMessage());
+        }
+        
+        $page = Pagination::getPages($numRecords, $this->recordsPerPage);
+        $offset = $this->recordsPerPage * ($page - 1);
+        $where ["LIMIT"] = [$offset,$this->recordsPerPage];
+        
         try {
             $this->records = App::getDB()->select("users",'*', $where);
             //print_r(App::getDB()->debug()->select("users",'*', $where));
