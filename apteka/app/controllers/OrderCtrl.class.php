@@ -67,16 +67,6 @@ class OrderCtrl {
             $order = new Order($id_user, $order_status, $order_date, $delivery_date);
 
             try {
-                $id_order = App::getDB()->get("orders", "id_order", [
-                    "ORDER" => ["id_order" => "DESC"]
-                ]);
-            } catch (\PDOException $e) {
-                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
-                if (App::getConf()->debug)
-                    Utils::addErrorMessage($e->getMessage());
-            }    
-
-            try {
                 App::getDB()->insert("orders",[
                   "id_user" => $order->id_user,
                   "order_status" => $order->order_status,
@@ -88,8 +78,17 @@ class OrderCtrl {
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
+            
+            try {
+                $id_order = App::getDB()->get("orders", "id_order", [
+                    "ORDER" => ["id_order" => "DESC"]
+                ]);
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
 
-            $id_order += 1;
 
             SessionUtils::store("id_order", $id_order);
 
