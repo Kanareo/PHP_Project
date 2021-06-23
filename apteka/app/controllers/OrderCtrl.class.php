@@ -7,7 +7,6 @@ use app\forms\OrderItemForm;
 use app\transfer\Order;
 use core\Utils;
 use core\ParamUtils;
-use core\RoleUtils;
 use core\SessionUtils;
 
 class OrderCtrl {
@@ -75,9 +74,7 @@ class OrderCtrl {
                 Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
-            }
-
-            //print($order->id_user);    
+            }    
 
             try {
                 App::getDB()->insert("orders",[
@@ -86,12 +83,6 @@ class OrderCtrl {
                   "order_date" => $order->order_date,
                   "delivery_date" => $order->delivery_date
                   ]);
-                /*print_r(App::getDB()->debug()->insert("orders", [
-                            "id_user" => $order->id_user,
-                            "order_status" => $order->order_status,
-                            "order_date" => $order->order_date,
-                            "delivery_date" => $order->delivery_date
-                ]));*/
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas wprowadzania rekordów');
                 if (App::getConf()->debug)
@@ -116,11 +107,6 @@ class OrderCtrl {
                   "id_product" => $this->form->id_product,
                   "quantity" => $this->form->quantity
                   ]);
-                /*print_r(App::getDB()->debug()->insert("order_items", [
-                            "id_order" => $this->form->id_order,
-                            "id_product" => $this->form->id_product,
-                            "quantity" => $this->form->quantity
-                ]));*/
                 Utils::addInfoMessage('Pomyślnie dodano produkt do listy');
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas wprowadzania rekordów');
@@ -154,8 +140,8 @@ class OrderCtrl {
 
     public function generateView() {
 
-        App::getSmarty()->assign('page_title', 'Panel Administratora');
         App::getSmarty()->display('OrderView.tpl');
+        
     }
 
 }

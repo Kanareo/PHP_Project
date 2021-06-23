@@ -53,7 +53,6 @@ class UserUpdateCtrl {
         $this->form->blocked = ParamUtils::getFromRequest("blocked");
 
         try {
-            //App::getDB()->debug()->select("users", '*', ['id_user' => $this->form->id_user]);
             $this->records = App::getDB()->update("users",
                     [
                         'blocked' => $this->form->blocked
@@ -74,8 +73,8 @@ class UserUpdateCtrl {
 
     public function generateView() {
 
-        App::getSmarty()->assign('page_title', 'Informacje o użytkowniku');
         App::getSmarty()->display('UserUpdateView.tpl');
+        
     }
 
 }

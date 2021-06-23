@@ -37,8 +37,8 @@ class MedInfoCtrl {
 
     public function generateView() {
 
-        App::getSmarty()->assign('page_title', '');
         App::getSmarty()->display('MedInfoView.tpl');
+        
     }
 
 }

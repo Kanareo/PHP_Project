@@ -70,8 +70,8 @@ class OrderEditCtrl {
 
     public function generateView() {
 
-        App::getSmarty()->assign('page_title', 'Panel Administratora');
         App::getSmarty()->display('OrderEditView.tpl');
+        
     }
 
 }

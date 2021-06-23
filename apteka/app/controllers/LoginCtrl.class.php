@@ -55,7 +55,6 @@ class LoginCtrl {
             return false;
         }
              
-        //print_r($user);
         if (!App::getMessages()->isError()) {
             
             if($user["blocked"] == 1) { Utils::addErrorMessage('Twoje konto jest zablokowane, skontaktuje się z administratorem'); }
@@ -91,7 +90,6 @@ class LoginCtrl {
 
     public function generateView() {
 
-        App::getSmarty()->assign('page_title', 'Strona logowania');
         App::getSmarty()->assign('form', $this->form);
         App::getSmarty()->display('LoginView.tpl');
     }

@@ -20,7 +20,6 @@ Utils::addRoute('orderClear', 'OrderCtrl', ['user','admin']);
 Utils::addRoute('orderEdit', 'OrderEditCtrl', ['user','admin']);
 Utils::addRoute('orderDelivered', 'OrderEditCtrl', ['user','admin']);
 Utils::addRoute('orderDelete', 'OrderEditCtrl', ['user','admin']);
-//Utils::addRoute('hello', 'HelloCtrl', ['user','admin']);
 
 Utils::addRoute('userBrowser', 'UserBrowserCtrl', ['admin']);
 Utils::addRoute('userBrowserData', 'UserBrowserCtrl', ['admin']);
@@ -32,6 +31,3 @@ Utils::addRoute('userAddSave', 'UserAddCtrl', ['admin']);
 
 Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl', ['user','admin']);
-
-
-//Utils::addRoute('action_name', 'controller_class_name');

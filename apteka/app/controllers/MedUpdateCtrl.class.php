@@ -30,7 +30,6 @@ class MedUpdateCtrl {
             //Utils::addErrorMessage($e->getMessage());
         }
 
-        //App::getSmarty()->assign('form', $this->form);
         App::getSmarty()->assign('products', $this->records);
         $this->generateView();
     }
@@ -43,7 +42,6 @@ class MedUpdateCtrl {
         if (is_numeric($this->form->quantity) && $this->form->quantity > 0) {
 
             try {
-                //App::getDB()->debug()->select("products",'*', ['id_product' => $this->form->id_product]);
                 $this->records = App::getDB()->update("products",
                         [
                             'quantity' => $this->form->quantity
@@ -66,9 +64,9 @@ class MedUpdateCtrl {
     }
 
     public function generateView() {
-
-        App::getSmarty()->assign('page_title', '');
+        
         App::getSmarty()->display('MedUpdateView.tpl');
+        
     }
 
 }

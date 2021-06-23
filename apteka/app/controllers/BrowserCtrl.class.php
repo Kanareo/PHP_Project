@@ -116,9 +116,8 @@ class BrowserCtrl{
     }
     
     public function generateView($page) {
-
-        App::getSmarty()->assign('page_title', 'Wyszukiwarka produktów');
-        //App::getSmarty()->assign('form', $this->form);
+        
         App::getSmarty()->display($page);
+        
     }
 }

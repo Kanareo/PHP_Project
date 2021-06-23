@@ -6,8 +6,6 @@ use core\App;
 use app\forms\UsersForm;
 use core\Utils;
 use core\ParamUtils;
-use core\RoleUtils;
-use core\SessionUtils;
 
 class UserAddCtrl{
     public function __construct() {
@@ -97,15 +95,6 @@ class UserAddCtrl{
                             "role" => $this->form->role,
                             "password" => $this->form->password
                         ]);
-                /*print_r(App::getDB()->debug()->insert("users",
-                        [
-                            "first_name" => $this->form->first_name,
-                            "second_name" => $this->form->second_name,
-                            "email" => $this->form->email,
-                            "phone" => $this->form->phone,
-                            "blocked" => $this->form->blocked,
-                            "role" => $this->form->role,
-                        ]));*/
                 Utils::addInfoMessage('Pomyślnie dodano użytkownika');
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
