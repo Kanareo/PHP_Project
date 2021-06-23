@@ -2,10 +2,10 @@
     <table>
         <thead style="color: white; font-weight: bold">
             <tr>
-                <th>Nazwa produktu</th>
-                <th>Kategoria</th>
-                <th>Producent</th>
-                <th>Cena</th>
+                <th style="width: 12em">Nazwa produktu</th>
+                <th style="width: 12em">Kategoria</th>
+                <th style="width: 12em">Producent</th>
+                <th style="width: 12em">Cena</th>
             </tr>
         </thead>
         <tbody style="color: lightgray">
@@ -20,6 +20,13 @@
             {/foreach}
         </tbody>
     </table>
+    <center>          
+        <button onclick="ajaxPostForm('form', '{url action="browserData" p = {$page-1}}', 'data'); return false;" {if {$page-1}==0}class="alt" disabled{/if}> &lt; </button>
+        <button onclick="ajaxPostForm('form', '{url action="browserData" p = 1}', 'data'); return false;" {if {$page}==1}class="alt" disabled{/if}>1</button>
+        <span style="margin:5%">Strona {$page} z {$lastPage-1}</span>
+        <button onclick="ajaxPostForm('form', '{url action="browserData" p = {$lastPage-1}}', 'data'); return false;" {if {$page}=={$lastPage-1}}class="alt" disabled{/if}>{$lastPage-1}</button>
+        <button onclick="ajaxPostForm('form', '{url action="browserData" p = {$page+1}}', 'data'); return false;" {if {$page+1}=={$lastPage}}class="alt" disabled{/if}> &gt; </button>
+    </center>
 {else}
     <h3 style="color: white; font-weight: bold">Nie znaleziono produktów</h3>
 {/if}

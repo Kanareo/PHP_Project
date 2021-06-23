@@ -3,14 +3,15 @@
 namespace app\controllers;
 
 use core\App;
+use core\Pagination;
 use app\forms\BrowserForm;
 use core\Utils;
 use core\ParamUtils;
-use core\RoleUtils;
-use core\SessionUtils;
 
 
 class BrowserCtrl{
+    
+    public $recordsPerPage = 2;
     
     private $form;
 
@@ -70,6 +71,22 @@ class BrowserCtrl{
         }
         
         $where ["ORDER"] = "id_product";
+        
+        $numRecords = 0;
+        
+        try {
+            $numRecords = App::getDB()->count("products", $where);
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                echo($e);
+                //Utils::addErrorMessage($e->getMessage());
+        }
+        
+        $page = Pagination::getPages($numRecords, $this->recordsPerPage);
+        $offset = $this->recordsPerPage * ($page - 1);
+        $where ["LIMIT"] = [$offset,$this->recordsPerPage];
+        
         try {
             $this->records = App::getDB()->select("products",['[><]brands'=>'id_brand', '[><]categories'=>'id_category'],'*', $where);
         } catch (\PDOException $e) {

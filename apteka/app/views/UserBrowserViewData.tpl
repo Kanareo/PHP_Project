@@ -2,13 +2,13 @@
     <table>
         <thead style="color: white; font-weight: bold">
             <tr>
-                <th>ID</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Email</th>
-                <th>Telefon</th>
-                <th>Zablokowany</th>
-                <th>Rola</th>
+                <th style="width: 5%">ID</th>
+                <th style="width: 15%">Imię</th>
+                <th style="width: 20%">Nazwisko</th>
+                <th style="width: 30%">Email</th>
+                <th style="width: 15%">Telefon</th>
+                <th style="width: 5%">Zablokowany</th>
+                <th style="width: 10%">Rola</th>
             </tr>
         </thead>
         <tbody style="color: lightgray">
