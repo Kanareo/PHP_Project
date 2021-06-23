@@ -10,6 +10,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="{$conf->app_url}/assets/css/main.css" />
+        <script type="text/javascript" src="{$conf->app_url}/js/functions.js"></script>
     </head>
     <body class="homepage is-preload">
         <div id="page-wrapper">
@@ -34,7 +35,7 @@
                                         <li>
                                             <a>Panel Administratora</a>
                                             <ul>
-                                                <li><a href="{url action='adminPanel'}">Wyszukaj użytkownika</a></li>
+                                                <li><a href="{url action='userBrowser'}">Wyszukaj użytkownika</a></li>
                                                 <li><a href="{url action='userAdd'}">Dodaj użytkownika</a></li>
                                             </ul>
                                         </li>

@@ -18,7 +18,7 @@ class BrowserCtrl{
         $this->form = new BrowserForm();
     }
     
-    public function action_browser() {
+    public function loadBrowser(){
         
         $this->form->name = ParamUtils::getFromRequest('name');
         $this->form->brand = ParamUtils::getFromRequest('brand');
@@ -81,13 +81,27 @@ class BrowserCtrl{
         
         App::getSmarty()->assign('form', $this->form);
         App::getSmarty()->assign('products', $this->records);
-        $this->generateView();
+        
     }
     
-    public function generateView() {
+    public function action_browserData(){
+         
+        $this->loadBrowser();
+        $this->generateView('BrowserViewData.tpl');
+        
+    }
+    
+    public function action_browser() {
+        
+        $this->loadBrowser();
+        $this->generateView('BrowserViewFull.tpl');
+        
+    }
+    
+    public function generateView($page) {
 
         App::getSmarty()->assign('page_title', 'Wyszukiwarka produktów');
         //App::getSmarty()->assign('form', $this->form);
-        App::getSmarty()->display('BrowserView.tpl');
+        App::getSmarty()->display($page);
     }
 }

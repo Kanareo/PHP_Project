@@ -3,18 +3,20 @@
 namespace app\controllers;
 
 use core\App;
+use core\Pagination;
 use app\forms\UsersForm;
 use core\Utils;
 use core\ParamUtils;
-use core\RoleUtils;
-use core\SessionUtils;
 
-class PanelCtrl{
+class UserBrowserCtrl{
+    
+    public $recordsPerPage = 5;
+    
     public function __construct() {
         $this->form = new UsersForm();
     }
     
-    public function action_adminPanel() {   
+    public function loadUserBrowser(){
         
         $this->form->id = ParamUtils::getFromRequest('id');
         $this->form->first_name = ParamUtils::getFromRequest('first_name');
@@ -23,7 +25,7 @@ class PanelCtrl{
         $this->form->phone = ParamUtils::getFromRequest('phone');
         $this->form->blocked = ParamUtils::getFromRequest('blocked');
         $this->form->role = ParamUtils::getFromRequest('role');
-        
+            
         
         try {
             $blocked = App::getDB()->select("users", [
@@ -70,7 +72,7 @@ class PanelCtrl{
             $search_params['phone[~]'] = $this->form->phone;
         }
      
-        if (isset($this->form->blocked)) {
+        if (isset($this->form->blocked) && ($this->form->blocked) == 0 || $this->form->blocked == 1) {
             $search_params['blocked'] = $this->form->blocked;
         }
         
@@ -97,12 +99,26 @@ class PanelCtrl{
         }
         
         App::getSmarty()->assign('users', $this->records);
-        $this->generateView();
+        
     }
     
-    public function generateView() {
+    public function action_userBrowserData(){
+         
+        $this->loadUserBrowser();
+        $this->generateView('UserBrowserViewData.tpl');
+        
+    }
+    
+    public function action_userBrowser() {
+        
+        $this->loadUserBrowser();
+        $this->generateView('UserBrowserViewFull.tpl');
+        
+    }
+    
+    public function generateView($page) {
 
         App::getSmarty()->assign('page_title', 'Panel Administratora');
-        App::getSmarty()->display('PanelView.tpl');
+        App::getSmarty()->display($page);
     }
 }
