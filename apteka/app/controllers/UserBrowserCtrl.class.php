@@ -54,7 +54,7 @@ class UserBrowserCtrl{
         
         $search_params = [];
         if (isset($this->form->id) && !empty($this->form->id)) {
-            $search_params['id_user[~]'] = $this->form->id;
+            $search_params['id_user'] = $this->form->id;
         }
         
         if (isset($this->form->first_name) && !empty($this->form->first_name)) {

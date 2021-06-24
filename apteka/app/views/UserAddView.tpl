@@ -18,9 +18,7 @@
             <option value="user">Użytkownik</option>
             <option value="admin">Administrator</option>
         </select>
-        <p>
-            <input type="submit" value="Dodaj użytkownika" style="margin-top: 5%; margin-bottom: 5%"/>
-        </p>
+            <input type="submit" class="medium" value="Dodaj użytkownika" style="margin-top: 5%; margin-bottom: 5%"/>
     </form>
     {include file='messages.tpl'}
 {/block}
